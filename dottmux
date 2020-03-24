@@ -1,0 +1,126 @@
+# ------------------------------------
+# General
+# ------------------------------------
+
+# Lower command delay 
+set -sg escape-time 1
+
+# Start first window and pane at 1
+set -g base-index 1
+set -g pane-base-index 1
+
+# Reload config file
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Stop auto rename window name 
+set -g automatic-rename off
+
+# Turn on 256 color support in tmux
+set-option -g default-terminal "xterm-256color"
+
+# Set default shell
+set-option -g default-shell "${SHELL}"
+
+# ------------------------------------
+# Key Binds
+# ------------------------------------
+
+# Set prefix key to ctrl-z
+set -g prefix ^E
+
+# Unbind default keybind
+unbind C-b
+
+# Set window split
+bind s split-window -v
+bind v split-window -h
+
+# Vim style bindings for pane movement
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# Vim style bindings for pane resiz
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Enable control of mouse
+set-option -g mouse on
+
+# Navigate using vim-style keys
+setw -g mode-keys vi
+
+# Vi copypaste mode
+set-window-option -g mode-keys vi
+bind -T copy-mode-vi v send-keys -X begin-selection
+bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+  		  
+unbind -T copy-mode-vi Enter
+bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "pbcopy"
+
+
+# ------------------------------------
+# staus bar
+# ------------------------------------
+
+# Color - tomorrow-night
+# see:https://github.com/connrs/dotfiles/blob/master/tmux/tomorrow-night.tmux
+
+set -g status-style fg="#c5c8c6",bg="#373b41"
+
+setw -g window-status-current-style bg="#282a2e",fg="#81a2be"
+
+setw -g window-status-activity-style bg="#1d1f21",fg="#8abeb7"
+
+set -g pane-active-border-style fg="#373b41",bg=default
+set -g pane-border-style fg="#373b41",bg=default
+
+set -g clock-mode-colour "#81a2be"
+set -g clock-mode-style 24
+
+set -g message-style fg="#000000",bg="#8abeb7"
+
+set -g message-command-style fg="#000000",bg="#8abeb7"
+
+set -g mode-style fg="#000000",bg="#8abeb7"
+
+set -g status-left-length 40
+set -g status-left "#[fg = green]Session: #S #[fg = yellow]#I #[fg = cyan]#P"
+set -g status-right-length 80
+set -g status-right '#{battery_icon}#{battery_percentage} | #{wifi_ssid} #{wifi_icon} | #[fg = cyan][%Y-%m-%d(%a) %H:%M]'
+
+# Set reflesh interval
+set -g status-interval 10
+
+# Center align window list
+set -g status-justify centre
+
+# #nable visual notificaiton
+setw -g monitor-activity on
+set -g visual-activity on
+
+# Position the status bar at top of screen
+set -g status-position top
+
+# ------------------------------------
+# tmux plugin
+# see: https://github.com/tmux-plugins/tpm
+# ------------------------------------
+set-environment -g TMUX_PLUGIN_MANAGER_PATH '~/.tmux/plugins/'
+set-environment -g PATH "/usr/local/bin:/bin:/usr/bin"
+
+set -g @tpm_plugins '             \
+  tmux-plugins/tpm                \
+  tmux-plugins/tmux-resurrect     \
+  tmux-yank/tmux-yank             \
+  tmux-plugins/tmux-online-status \
+  tmux-plugins/tmux-battery       \
+  gmoe/tmux-wifi                  \
+'
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'

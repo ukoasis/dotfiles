@@ -1,0 +1,54 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+[[plugins]]
+repo = 'tpope/vim-surround'
+[[plugins]] 
+repo = 'kana/vim-smartchr.git'
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+[[plugins]]
+repo = 'w0rp/ale'
+[[plugins]]
+repo = 'janko-m/vim-test'
+[[plugins]]
+repo = 'kassio/neoterm'
+[[plugins]]
+repo = 'vim-scripts/Align.git'
+[[plugins]]
+repo = 'vim-scripts/open-browser.vim'
+[[plugins]]
+repo = 'mattn/sonictemplate-vim.git'
+[[plugins]]
+repo = 'Lokaltog/vim-easymotion'
+[[plugins]]
+repo = 'kana/vim-arpeggio'
+[[plugins]]
+repo = 'simeji/winresizer'
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+[[plugins]]
+repo = 'airblade/vim-gitgutter.git'
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+[[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['lightline.vim', 'ale']
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+[[plugins]]
+repo = 'rhysd/try-colorscheme.vim'
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+[[plugins]]
+repo = 'tpope/vim-endwise'
+[[plugins]]
+repo = 'milch/vim-fastlane'
+[[plugins]]
+repo = 'dag/vim-fish'
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
+hook_add = 'autocmd BufWritePre * :FixWhitespace'

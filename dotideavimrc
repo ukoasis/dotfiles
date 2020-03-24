@@ -1,0 +1,24 @@
+"Mapping ESC key
+imap jj <esc>
+map ; :
+
+" easy window navigation
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-k> <c-w>k
+nnoremap <a-h> gT
+nnoremap <a-l> gt
+nnoremap <c-s-tab> gT
+nnoremap <c-tab> gt
+
+" ============================================================================
+" Editor control
+" ============================================================================
+
+" Reload .ideavimrc
+nnoremap <Space>, :source ~/.ideavimrc<CR>
+
+" share clipboard
+set clipboard=unnamed
+

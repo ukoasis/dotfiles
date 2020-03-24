@@ -1,0 +1,5 @@
+dotvim/backup/*
+!dotvim/backup/.gitkeep
+init.vim
+dotenv
+dotfish/fish_variables

@@ -1,0 +1,8 @@
+" クリップボード
+set clipboard+=unnamed
+set clipboard=unnamed
+" キーマップ. [:] と [;] を入れ替え
+noremap ; :
+noremap : ;
+
+imap jj <Esc>
