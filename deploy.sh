@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 if [ ! -L "${HOME}/.vim" ]; then
   ln -sf `pwd`/dotvim           ${HOME}/.vim
 fi
@@ -7,7 +9,7 @@ if [ ! -L "${HOME}/.peco" ]; then
   ln -sf `pwd`/dotpeco          ${HOME}/.peco
 fi
 if [ ! -L "${HOME}/.config/nvim" ]; then
-  ln -sf ~/.vim                 ${HOME}/.config/nvim
+  ln -sf `pwd`/dotvim           ${HOME}/.config/nvim
 fi
 if [ ! -L "${HOME}/.config/fish" ]; then
   ln -sf `pwd`/dotfish          ${HOME}/.config/fish
@@ -17,7 +19,7 @@ if [ ! -f "${HOME}/.config/alacritty/alacritty.yml" ]; then
   ln -sf `pwd`/dotalacritty.yml ${HOME}/.config/alacritty/alacritty.yml
 fi
 ln -sf `pwd`/dotvimrc                   ${HOME}/.vimrc
-ln -sf ${HOME}/.vimrc                   ${HOME}/.config/nvim/init.vim
+ln -sf `pwd`/dotvimrc                   ${HOME}/.config/nvim/init.vim
 ln -sf `pwd`/dotxvimrc                  ${HOME}/.xvimrc
 ln -sf `pwd`/dottmux                    ${HOME}/.tmux.conf
 ln -sf `pwd`/dotgitignore               ${HOME}/.gitignore
