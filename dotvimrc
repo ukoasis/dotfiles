@@ -3,14 +3,9 @@
 if &compatible
   set nocompatible
 endif
-
-" dein自体の自動インストール
+"
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-if !isdirectory(s:dein_repo_dir)
-  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
-endif
-
 execute 'set runtimepath^=' . s:dein_repo_dir
 
 " change leader key \ to Space
@@ -18,12 +13,12 @@ let mapleader = "\<Space>"
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  
+
   let s:toml = expand('~/.config/nvim/rc/dein.toml')
   let s:lazy_toml = expand('~/.config/nvim/rc/dein_lazy.toml')
   call dein#load_toml(s:toml, {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
-  
+
   call dein#end()
   call dein#save_state()
 endif
@@ -44,7 +39,7 @@ syntax enable
 au InsertEnter * hi StatusLine guifg=Blue guibg=Yellow gui=none ctermfg=Blue ctermbg=Yellow cterm=none
 au InsertLeave * hi StatusLine guifg=Blue guibg=DarkGray   gui=none ctermfg=Blue ctermbg=DarkGray cterm=none
 
-" enable marker 
+" enable marker
 set foldmethod=marker
 
 " set color & font
@@ -67,7 +62,7 @@ set undodir=~/.vim/backup
 nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
 nnoremap <Space>, :<C-u>source $MYVIMRC<CR>
 
-" yank to clipboard 
+" yank to clipboard
 if has('nvim')
   set clipboard=unnamed
 else
@@ -80,7 +75,7 @@ hi PmenuSel ctermbg=8
 hi CursorLine guifg=#E19972 ctermfg=216 ctermbg=132 guibg=4
 
 " diff
-set diffopt=vertical 
+set diffopt=vertical
 
 " indent
 set expandtab     " タブ入力を複数の空白入力に置き換える
@@ -125,14 +120,14 @@ Arpeggio inoremap jk  <Esc>
 nnoremap <c-i> :vertical resize +5<cr>
 nnoremap <c-d> :vertical resize -5<cr>
 
-" change leader key \ to , 
+" change leader key \ to ,
 let mapleader = "\<Space>"
 
 " replace ; : for us keyboard
 nnoremap ; :
 nnoremap : ;
 
-" tab 
+" tab
 nnoremap [Tab]  <Nop>
 nmap     t 			[Tab]
 " Tab jump
@@ -141,7 +136,7 @@ for n in range(1, 9)
 endfor
 " t1で１番左のタブ、t2 で1番左から2番目のタブにジャンプ
 
-" tc 新しいタブを一番右に作る 
+" tc 新しいタブを一番右に作る
 nnoremap [Tab]c :tablast <bar> tabnew<CR>
 " tx タブを閉じる
 nnoremap [Tab]x :tabclose<CR>
@@ -151,7 +146,7 @@ nnoremap [Tab]n :tabnext<CR>
 nnoremap [Tab]p :tabprevious<CR>
 
 " tags
-nnoremap <C-]> g<C-]> 
+nnoremap <C-]> g<C-]>
 
 " neovim terminal mode
 tnoremap <silent> <ESC> <C-\><C-n>
@@ -167,7 +162,7 @@ if &encoding !=? 'utf-8'
 endif
 
 " }}}
- 
+
 " == Plugin Settings == {{{1
 
 " NERDTree {{{
@@ -176,9 +171,9 @@ nnoremap <silent><C-b> :NERDTreeToggle<cr>
 
 " }}}
 
-" smartchr {{{ 
+" smartchr {{{
 
-inoremap <expr> = smartchr#loop('=', ' = ', ' == ', ' === ') 
+inoremap <expr> = smartchr#loop('=', ' = ', ' == ', ' === ')
 inoremap <expr> , smartchr#loop(',', ', ')
 
 "}}}
@@ -186,19 +181,19 @@ inoremap <expr> , smartchr#loop(',', ', ')
 " lightline {{{
 
 let g:lightline = {
-			\ 'colorscheme': 'wombat', 
+			\ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [
       \    ['mode', 'paste'],
       \    ['readonly', 'filename', 'modified'],
-      \    [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ] 
+      \    [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]
       \   ],
-      \   'right': [ [ 'jafix' ], 
-      \              [ 'lineinfo' ],  
+      \   'right': [ [ 'jafix' ],
+      \              [ 'lineinfo' ],
       \							 [ 'fileformat',  'fileencoding',  'filetype' ] ]
       \ },
 			\ 'component': {
-			\		'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}', 
+			\		'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
 			\		'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}'
 			\ }
       \ }
@@ -262,8 +257,8 @@ nnoremap <leader>l :TestLast<CR>
 
 nmap <silent> <leader>da <Plug>DashSearch
 let g:dash_map = {
-      \ 'ruby' : ['ruby',  'rubygems',  'rails', 'eruby'], 
-      \ 'javascript' : ['javascript', 'jquery', 'jqueryui', 'jquerym', 'bootstrap', 'foundation', 'lodash', 'underscore', 'nodejs', 'express', 'jasmine', 'sinon', 'chai'], 
+      \ 'ruby' : ['ruby',  'rubygems',  'rails', 'eruby'],
+      \ 'javascript' : ['javascript', 'jquery', 'jqueryui', 'jquerym', 'bootstrap', 'foundation', 'lodash', 'underscore', 'nodejs', 'express', 'jasmine', 'sinon', 'chai'],
 			\ }
 
 " }}}
@@ -355,7 +350,7 @@ set updatetime=250
 
 " }}}
 
-" {{{ == Language Settings == 
+" {{{ == Language Settings ==
 
 augroup Html
 	nnoremap <Leader>p :OpenBrowserCurrent<CR>
